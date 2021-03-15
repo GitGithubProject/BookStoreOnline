@@ -1,0 +1,16 @@
+﻿body {
+    background-color: #c8eae029;
+}
+.bg-inverse {
+    background-color: #12db31 !important;
+}
+element {
+    float: right;
+}
+
+.badge-primary {
+    background-color: #d80252;
+}
+.bg-faded {
+    background-color: #bfdfec;
+}
