@@ -2,9 +2,9 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 
-namespace BookStore.Models
+namespace BookStore.Models.ViewModels
 {
-    public class Product
+    public class ProductViewModel
     {
         public int ProductID { get; set; }
 
@@ -23,6 +23,8 @@ namespace BookStore.Models
         [Required(ErrorMessage = "Please specify a category")]
         public string Category { get; set; }
 
-   
+      
+        public IFormFile Photo { get; set; }
     }
 }
+

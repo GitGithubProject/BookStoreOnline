@@ -8,18 +8,20 @@
 
 <p>Please enter your details, and we'll ship your goods right away!</p>
 
-<div asp-validation-summary="All" class="text-danger"></div>
-
 <form asp-action="Checkout" method="post">
 
     <h3>Ship to</h3>
-
+ 
     <div class="form-group">
-        <label>Name:</label><input asp-for="Name" class="form-control" />
+        <label asp-for="Name">Name:</label>
+        <div><span asp-validation-for="Name" class="text-danger"></span></div>
+        <input asp-for="Name" class="form-control" />
     </div>
     <h3>Address</h3>
     <div class="form-group">
-        <label>Line 1:</label><input asp-for="Line1" class="form-control" />
+        <label asp-for="Line1">Line 1:</label>
+        <div><span asp-validation-for="Line1" class="text-danger"></span></div>
+        <input asp-for="Line1" class="form-control" />
     </div>
     <div class="form-group">
         <label>Line 2:</label><input asp-for="Line2" class="form-control" />
@@ -28,16 +30,24 @@
         <label>Line 3:</label><input asp-for="Line3" class="form-control" />
     </div>
     <div class="form-group">
-        <label>City:</label><input asp-for="City" class="form-control" />
+        <label asp-for="City">City:</label>
+        <div><span asp-validation-for="City" class="text-danger"></span></div>
+        <input asp-for="City" class="form-control" />
     </div>
     <div class="form-group">
-        <label>State:</label><input asp-for="State" class="form-control" />
+        <label asp-for="State">State:</label>
+        <div><span asp-validation-for="State" class="text-danger"></span></div>
+        <input asp-for="State" class="form-control" />
     </div>
     <div class="form-group">
-        <label>Zip:</label><input asp-for="Zip" class="form-control" />
+        <label asp-for="Zip">Zip:</label>
+        <div><span asp-validation-for="Zip" class="text-danger"></span></div>
+        <input asp-for="Zip" class="form-control" />
     </div>
     <div class="form-group">
-        <label>Country:</label><input asp-for="Country" class="form-control" />
+        <label asp-for="Country">Country:</label>
+        <div><span asp-validation-for="Country" class="text-danger"></span></div>
+        <input asp-for="Country" class="form-control" />
     </div>
     <h3>Options</h3>
     <div class="checkbox">

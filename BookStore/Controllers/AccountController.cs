@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using BookStore.Models.ViewModels;
+using BookStore.Models;
 
 namespace BookStore.Controllers
 {
@@ -11,12 +12,16 @@ namespace BookStore.Controllers
     {
         private UserManager<IdentityUser> userManager;
         private SignInManager<IdentityUser> signInManager;
+
         public AccountController(UserManager<IdentityUser> userMgr,
         SignInManager<IdentityUser> signInMgr)
         {
             userManager = userMgr;
             signInManager = signInMgr;
+
+            IdentitySeedData.EnsurePopulated(userMgr).Wait();
         }
+
         [AllowAnonymous]
         public ViewResult Login(string returnUrl)
         {
@@ -25,6 +30,7 @@ namespace BookStore.Controllers
                 ReturnUrl = returnUrl
             });
         }
+
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -53,5 +59,7 @@ namespace BookStore.Controllers
             await signInManager.SignOutAsync();
             return Redirect(returnUrl);
         }
+
+        
     }
 }

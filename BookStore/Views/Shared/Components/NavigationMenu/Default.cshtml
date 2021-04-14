@@ -1,20 +1,29 @@
 ﻿@model IEnumerable<string>
 
-<a class="btn btn-block btn-secondary"
-   asp-action="List"
-   asp-controller="Product"
-   asp-route-category="">
-    Home
-</a>
+    <ul class="navbar-nav flex-grow-1">
+        <li class="nav-item">
+            <a class="btn btn-block m-2 p-3 btn-secondary"
+               asp-action="List"
+               asp-controller="Product"
+               asp-route-category="">
+                Home
+            </a>
+        </li>
+    </ul>
+    
 
-@foreach (string category in Model)
-{
-    <a class="btn btn-block
-     @(category == ViewBag.SelectedCategory ? "btn-primary": "btn-secondary")"
-       asp-action="List"
-       asp-controller="Product"
-       asp-route-category="@category"
-       asp-route-productPage="1">
-        @category
-    </a>
-}
+    @foreach (string category in Model)
+    {
+        <ul class="navbar-nav flex-grow-1">
+            <li class="nav-item">
+                <a class="btn m-2 p-3 btn-block
+                @(category == ViewBag.SelectedCategory ? "btn-primary": "btn-secondary")"
+                   asp-action="List"
+                   asp-controller="Product"
+                   asp-route-category="@category"
+                   asp-route-productPage="1">
+                    @category
+                </a>
+            </li>
+        </ul>
+    }

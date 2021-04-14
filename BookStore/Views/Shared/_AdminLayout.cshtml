@@ -2,7 +2,22 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <link rel="stylesheet" asp-href-include="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <environment include="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+
+    </environment>
+
+    <environment exclude="Development">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
+              integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
+              crossorigin="anonymous"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only"
+              asp-fallback-test-property="position"
+              asp-fallback-test-value="absolute"
+              asp-suppress-fallback-integrity="true" />
+
+    </environment>
     <title>@ViewBag.Title</title>
 
     <style>
@@ -10,26 +25,72 @@
             border-color: red;
             background-color: #fee;
         }
-    </style>
 
+        body {
+            background-color: #5286F3;
+            font-size: 14px;
+            color: #fff;
+        }
+
+        .bg-info {
+            background-color: #de5b5b !important;
+        }
+
+        .btnwidth {
+            width: 58px;
+            margin-bottom: 1px;
+        }
+
+        .simple-login-container {
+            width: 300px;
+            max-width: 100%;
+            margin: 50px auto;
+        }
+
+        .col-sm-10, .col-sm-2 {
+            position: relative;
+            width: 48%;
+            min-height: 1px;
+            padding: 1px;
+           
+            margin-left: 77px;
+        }
+
+
+        .simple-login-container #btnCss {
+            background-color: #FF5964;
+            color: #fff;
+        }
+    </style>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
-
 </head>
-<body class="m-1 p-1">
-    <div class="bg-info p-2 row">
-        <div class="col">
-            <h4>@ViewBag.Title</h4>
-        </div>
-        <div class="col-2">
-            <a class="btn btn-sm btn-primary"
-               asp-action="Logout" asp-controller="Account">Log Out</a>
+<body>
+    <div class="wrapper">
+
+        <div class="container-fluid">
+            <div class="navbar navbar-inverse" role="navigation">
+
+                <div class="bg-info row p-1">
+                    <div class="col-8">
+                        <h3>@ViewBag.Title</h3>
+                    </div>
+                    <div class="col-4">
+                        <a class="btn btn-sm btn-primary "
+                           asp-action="Logout" asp-controller="Account">Log Out</a>
+                    </div>
+                </div>
+
+            </div>
+
+            @if (TempData["message"] != null)
+            {
+                <div class="alert alert-success">@TempData["message"]</div>
+            }
+            @RenderBody()
         </div>
     </div>
-    @if (TempData["message"] != null) {
-        <div class="alert alert-success">@TempData["message"]</div>
-    }
-    @RenderBody()
+   
 </body>
 </html>
